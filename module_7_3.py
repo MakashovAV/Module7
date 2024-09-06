@@ -12,8 +12,8 @@ class WordsFinder:
             with open(file_name, 'r', encoding='utf-8') as file:
                 words = file.read().lower()
                 for x in punc:
-                    data = words.replace(x, '')
-            all_words[file_name] = data.split()
+                    words = words.replace(x, '')
+                all_words[file_name] = words.split()
         return all_words
 
     def find(self, word):
@@ -28,7 +28,8 @@ class WordsFinder:
             count_word[file_name] = words.count(word.lower())
         return count_word
 
+
 finder2 = WordsFinder('test_file.txt')
 print(finder2.get_all_words())  # Все слова
-print(finder2.find('TEXT')) # 3 слово по счёту
-print(finder2.count('teXT')) # 4 слова teXT в тексте всего
+print(finder2.find('TEXT'))  # 3 слово по счёту
+print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
