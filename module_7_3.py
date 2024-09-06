@@ -7,11 +7,10 @@ class WordsFinder:
 
     def get_all_words(self):
         all_words = {}
-        punc = [',', '.', '=', '!', '?', ';', ':', ' - ']
         for file_name in self.file_names:
             with open(file_name, 'r', encoding='utf-8') as file:
                 words = file.read().lower()
-                for x in punc:
+                for x in [',', '.', '=', '!', '?', ';', ':', ' - ']:
                     words = words.replace(x, '')
                 all_words[file_name] = words.split()
         return all_words
